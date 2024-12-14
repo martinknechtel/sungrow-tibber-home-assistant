@@ -1,0 +1,92 @@
+alias: In Winter check Tibber price every hour and control home battery
+description: ""
+triggers:
+  - trigger: time_pattern
+    minutes: 1
+  - trigger: state
+    entity_id:
+      - binary_sensor.exporting_power_delay
+    to: "on"
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+conditions: []
+actions:
+  - if:
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: binary_sensor.exporting_power
+            state: "on"
+          - condition: template
+            value_template: >-
+              {{ float(states('sensor.tibber_electricity_price')) >
+              1.25 *
+              float(state_attr('sensor.tibber_electricity_price',
+              'min_price')) }}
+    then:
+      - action: notify.persistent_notification
+        metadata: {}
+        data:
+          message: >-
+            Consume from battery. The electricity price is now {{
+            states('sensor.tibber_electricity_price') }},  average is
+            {{float(state_attr('sensor.tibber_electricity_price',
+            'avg_price'))}},  min is
+            {{float(state_attr('sensor.tibber_electricity_price',
+            'min_price'))}}
+      - action: script.sg_set_self_consumption_mode
+        metadata: {}
+        data: {}
+    else:
+      - if:
+          - condition: and
+            conditions:
+              - condition: state
+                entity_id: input_boolean.battery_recharge_when_cheap_tibber_price
+                state: "on"
+              - condition: template
+                value_template: >-
+                  {{ float(states('sensor.tibber_electricity_price'))
+                  < 0.9 *
+                  float(state_attr('sensor.tibber_electricity_price',
+                  'avg_price'))
+
+                  and
+                  float(states('sensor.tibber_electricity_price')) <
+                  1.01 *
+                  float(state_attr('sensor.tibber_electricity_price',
+                  'min_price')) }}
+        then:
+          - action: notify.persistent_notification
+            metadata: {}
+            data:
+              message: >-
+                Charge battery. The electricity price is now {{
+                states('sensor.tibber_electricity_price') }}, 
+                average is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'avg_price'))}},  min is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'min_price'))}}
+          - action: script.sg_set_forced_charge_battery_mode
+            metadata: {}
+            data: {}
+        else:
+          - action: notify.persistent_notification
+            metadata: {}
+            data:
+              message: >-
+                Consume from grid. Bypassing battery. Feeding PV surplus into
+                grid, no battery charging.  The electricity price is now {{
+                states('sensor.tibber_electricity_price') }}, 
+                average is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'avg_price'))}},  min is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'min_price'))}}
+          - action: script.sg_set_battery_bypass_mode
+            metadata: {}
+            data: {}
+mode: single

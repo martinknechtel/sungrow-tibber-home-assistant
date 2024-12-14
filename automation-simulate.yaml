@@ -1,0 +1,76 @@
+alias: In Winter check Tibber price every hour and control home battery
+description: ""
+triggers:
+  # every hour at minute xx:01
+  - trigger: time_pattern
+    minutes: 1
+conditions: []
+actions:
+  - if:
+      - condition: or
+        conditions:
+          # assumption: discharging the battery makes only sense if price is at least 25% higher
+          # compared to when we charged the battery. There is always some loss in a charge-discharge cycle
+          # coming from the inverter efficiency and battery efficiency
+          - condition: template
+            value_template: >-
+              {{ float(states('sensor.tibber_electricity_price')) >
+              1.25 *
+              float(state_attr('sensor.tibber_electricity_price',
+              'min_price')) }}
+    then:
+      - action: notify.persistent_notification
+        metadata: {}
+        data:
+          message: >-
+            Consume from battery. The electricity price is now {{
+            states('sensor.tibber_electricity_price') }},  average is
+            {{float(state_attr('sensor.tibber_electricity_price',
+            'avg_price'))}},  min is
+            {{float(state_attr('sensor.tibber_electricity_price',
+            'min_price'))}}
+    else:
+      - if:
+          - condition: and
+            conditions:
+              # charge also when price is 1% above the cheapest hour, so we can charge for more than one hour,
+              # in my case at home I need 2 hours to fully charge the home battery. Also I only want to charge when 10%
+              # below average price. On days with very flat price curve, charge/discharge would not make sense.
+              - condition: template
+                value_template: >-
+                  {{ float(states('sensor.tibber_electricity_price'))
+                  < 0.9 *
+                  float(state_attr('sensor.tibber_electricity_price',
+                  'avg_price'))
+
+                  and
+                  float(states('sensor.tibber_electricity_price')) <
+                  1.01 *
+                  float(state_attr('sensor.tibber_electricity_price',
+                  'min_price')) }}
+        then:
+          - action: notify.persistent_notification
+            metadata: {}
+            data:
+              message: >-
+                Charge battery. The electricity price is now {{
+                states('sensor.tibber_electricity_price') }}, 
+                average is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'avg_price'))}},  min is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'min_price'))}}
+        else:
+          - action: notify.persistent_notification
+            metadata: {}
+            data:
+              message: >-
+                Consume from grid. Bypassing battery. Feeding PV surplus into
+                grid, no battery charging.  The electricity price is now {{
+                states('sensor.tibber_electricity_price') }}, 
+                average is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'avg_price'))}},  min is
+                {{float(state_attr('sensor.tibber_electricity_price',
+                'min_price'))}}
+mode: single
