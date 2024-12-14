@@ -32,7 +32,9 @@ Here is [automation-extended.yaml](automation-extended.yaml) with the following 
 ![Sensor for Exporting Power existed and I added a toggle to control Forced Charge](Toggle_Recharge.jpg)
 
 ## You don't have Tibber yet? \[affiliate links\]
-* English short version: use my invite code https://invite.tibber.com/r664wqgc and if you are looging for an ecological gas supplier have a look at https://www.polarstern-energie.de/entdecke-polarstern/?rc=6H5ZZZN4 
+* English short version:
+  * Use my invite code https://invite.tibber.com/r664wqgc
+  * And if you are looking for an ecological gas supplier have a look at https://www.polarstern-energie.de/entdecke-polarstern/?rc=6H5ZZZN4 
 * German long version:
   * Strom ist immer dann billig, wenn besonders viel Solar und Windstrom im Netz ist. Doppelter Nutzen also! Du kannst Geld sparen, die Umwelt schonen und gleichzeitig unnötigen Energieverbrauch vermeiden. Wie das geht? Mit den stundenaktuellen Strompreisen von Tibber kannst du deinen Verbrauch einfach auf die günstigsten Stunden verlagern und teure Stunden vermeiden. Probiere es aus, und wir bekommen beide 50 € als Bonus, den wir im Tibber Store einlösen können. ⚡ Lies hier mehr dazu: https://invite.tibber.com/r664wqgc
   * Und falls bei dir wie bei mir keine Wärmepumpe geht, dann gibt es 100% Ökogas. Polarstern ist ein unabhängiger Ökoenergieversorger, den ich dir ans Herz legen möchte. Die bieten nur saubere Energie, fördern die Energiewende weltweit und sind von der Gemeinwohl-Ökonomie zertifiziert. Ich find's super. Und der Wechsel ist in wenigen Minuten erledigt - wirklich! Mit meinem Empfehlungscode BC3578BV bekommst du außerdem einen Willkommensbonus von 20 Euro auf deine erste Jahresrechnung. Schau sie dir gerne mal an. https://www.polarstern-energie.de/entdecke-polarstern/?rc=6H5ZZZN4
