@@ -3,7 +3,10 @@
 ## Goal
 Charge your home battery in cheap Tibber hours, consume from the grid in average price times, consume from home battery in expensive hours.
 
-![Diagram with Tibber price over time and charging your home battery at the right time](Tibber_2024-12-12.jpg).
+![Diagram with Tibber price over time and charging your home battery at the right time](Tibber_2024-12-12.jpg)
+
+In this example, the result we want to achieve would look like this. The battery has been charged during the cheapest hours 2:00-4:00, consumed in the expensive hours 8:00-21:00, and the rest of the day battery was bypassed and the grid powered the house at a relatively low price where a charge-discharge battery cycle would not pay off.
+![Animation showing successful battery and grid use times](Tibber_2024-12-12_sungrow.gif)
 
 ## Manual Alternative
 At first I used the Sungrow app iSolarCloud. I manually scheduled time windows to charge and discharge. Look for Forced Charging, Battery Use Time, Weekend Discharging in the app
