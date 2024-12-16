@@ -15,7 +15,7 @@ At first I used the Sungrow app iSolarCloud. I manually scheduled time windows t
 * https://www.home-assistant.io/integrations/tibber
 
 ## Simulate first
-Create the automation [automation-simulate.yaml](automation-simulate.yaml). Have no fear since it only posts notifications to your Home Assistant UI. If you don't know how to create automations, and how you deactive it because summer will come, [learn how to do it](https://www.home-assistant.io/docs/automation/editor/).
+Create the automation [automation-simulate.yaml](automation-simulate.yaml). Have no fear since for now it only posts notifications to your Home Assistant UI, we will extend this simulation mode with real action in next section. To install, create a new Automation in the UI, switch to yaml view, and copy&paste. If you want to learn more about creating Automations, [read the documentation](https://www.home-assistant.io/docs/automation/editor/).
 
 ![Notifications only, no action yet](Simulate.jpg)
 
