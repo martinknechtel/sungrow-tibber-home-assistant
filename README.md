@@ -30,7 +30,7 @@ Make your automation do something by calling the scripts that come with the Sung
 ## Add further conditions to refine
 Here is [automation-extended.yaml](automation-extended.yaml) with the following extensions:
 * I realized, the battery is not charged while in bypass mode, so I use the already existing sensor `exporting_power` as trigger.
-* And I realized in some weeks I do not want to charge my battery from the grid, the sun delivers enough if I consume from the battery only in expensive hours, so I added a toggle `battery_recharge_when_cheap_tibber_price`
+* And I realized in some weeks I do not want to charge my battery from the grid, the sun delivers enough if I consume from the battery only in expensive hours, so I added a toggle `battery_recharge_when_cheap_tibber_price`. Creating a plain new toggle is easily done as https://www.home-assistant.io/integrations/input_boolean/, remember to use the same name as I did or change it in your automation yaml.
 
 ![Sensor for Exporting Power existed and I added a toggle to control Forced Charge](Toggle_Recharge.jpg)
 
