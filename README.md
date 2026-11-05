@@ -3,7 +3,7 @@
 ## ARCHVIVED
 I will close this repo, since meanwhile [evcc Optimizer] covers the goal. See the following picture and compare it with the Goal below. All covered: charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production. So my stop-gap solution is not required anymore and I archive this repo.
 
-![charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production](evcc Optimizer.PNG)
+![charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production](evcc_Optimizer.PNG)
 
 ## Goal
 Charge your home battery in cheap Tibber hours, consume from the grid in average price times, consume from home battery in expensive hours.
