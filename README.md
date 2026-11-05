@@ -1,7 +1,7 @@
 # Sungrow + Tibber to save money 💴 (and the planet) 🌍
 
-## ARCHVIVED
-I will close this repo, since meanwhile [evcc Optimizer] covers the goal. See the following picture and compare it with the Goal below. All covered: charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production. So my stop-gap solution is not required anymore and I archive this repo.
+## --- ARCHIVED ---
+I will close this repo, since meanwhile [evcc Optimizer](https://docs.evcc.io/en/features/optimizer/) covers the goal. See the following picture and compare it with the Goal below. All covered: charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production. So my stop-gap solution is not required anymore and I archive this repo.
 
 ![charge battery, consume from battery, consume from grid - all based on grid price and predicted consumption and solar production](evcc_Optimizer.PNG)
 
